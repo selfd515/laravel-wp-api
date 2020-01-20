@@ -108,9 +108,9 @@ class WpApi
      *
      * @return array
      */
-    public function categories()
+    public function categories($slug = null)
     {
-        return $this->get('categories',['per_page' => 99]);
+        return $this->get('categories',['per_page' => 99, 'slug' => $slug]);
     }
 
     /**
@@ -145,9 +145,9 @@ class WpApi
      * @param  int $page
      * @return array
      */
-    public function categoryPosts($cat = null, $page = null, $pp = null, $slug=null)
+    public function categoryPosts($cat = null, $page = null, $pp = null)
     {
-        return $this->get('posts', ['categories' => trim($cat),'page' => $page, 'per_page' => $pp, 'slug' => $slug]);
+        return $this->get('posts', ['categories' => trim($cat),'page' => $page, 'per_page' => $pp]);
     }
 
     /**
