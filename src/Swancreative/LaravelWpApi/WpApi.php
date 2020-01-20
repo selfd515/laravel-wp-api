@@ -145,9 +145,9 @@ class WpApi
      * @param  int $page
      * @return array
      */
-    public function categoryPosts($cat = null, $page = null, $pp = null)
+    public function categoryPosts($cat = null, $page = null, $pp = null, $slug=null)
     {
-        return $this->get('posts', ['categories' => trim($cat),'page' => $page, 'per_page' => $pp]);
+        return $this->get('posts', ['categories' => trim($cat),'page' => $page, 'per_page' => $pp, 'slug' => $slug]);
     }
 
     /**
