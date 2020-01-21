@@ -2,6 +2,7 @@
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
+use Debugbar;
 
 class WpApi
 {
@@ -89,7 +90,7 @@ class WpApi
      */
     public function post($slug)
     {
-        return $this->get('posts', ['slug' => $slug]);
+        return $this->get('posts', ['slug' => $slug, '_embed' => '']);
     }
 
     /**
@@ -240,8 +241,8 @@ class WpApi
             if ($this->auth) {
                 $query['auth'] = $this->auth;
             }
-
-            $response = $this->client->get($this->endpoint . $method.'?_embed', $query);
+            Debugbar::info($this->client->get($this->endpoint . $method, $query));
+            $response = $this->client->get($this->endpoint . $method, $query);
 
             $return = [
                 'results' => json_decode((string) $response->getBody(), true),
