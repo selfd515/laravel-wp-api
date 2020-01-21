@@ -89,7 +89,7 @@ class WpApi
      */
     public function post($slug)
     {
-        return $this->get('posts'.'?_embed', ['slug' => $slug]);
+        return $this->get('posts', ['slug' => $slug]);
     }
 
     /**
@@ -150,7 +150,7 @@ class WpApi
      */
     public function categoryPosts($cat = null, $page = null, $pp = null)
     {
-        return $this->get('posts', ['?_embed','categories' => trim($cat),'page' => $page, 'per_page' => $pp]);
+        return $this->get('posts', ['categories' => trim($cat),'page' => $page, 'per_page' => $pp]);
     }
 
     /**
@@ -241,7 +241,7 @@ class WpApi
                 $query['auth'] = $this->auth;
             }
 
-            $response = $this->client->get($this->endpoint . $method, $query);
+            $response = $this->client->get($this->endpoint . $method.'?_embed', $query);
 
             $return = [
                 'results' => json_decode((string) $response->getBody(), true),
