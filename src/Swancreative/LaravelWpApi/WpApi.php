@@ -89,7 +89,7 @@ class WpApi
      */
     public function post($slug)
     {
-        return $this->get('posts', ['?_embed', 'slug' => $slug]);
+        return $this->get('posts'.'?_embed', ['slug' => $slug]);
     }
 
     /**
