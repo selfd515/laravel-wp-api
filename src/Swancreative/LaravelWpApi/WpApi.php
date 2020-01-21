@@ -89,7 +89,7 @@ class WpApi
      */
     public function post($slug)
     {
-        return $this->get('posts', ['slug' => $slug]);
+        return $this->get('posts', ['slug' => $slug, '_embed']);
     }
 
     /**
@@ -147,7 +147,7 @@ class WpApi
      */
     public function categoryPosts($cat = null, $page = null, $pp = null)
     {
-        return $this->get('posts', ['categories' => trim($cat),'page' => $page, 'per_page' => $pp]);
+        return $this->get('posts', ['categories' => trim($cat),'page' => $page, 'per_page' => $pp, '_embed']);
     }
 
     /**
@@ -214,6 +214,7 @@ class WpApi
      * Get media information by media id
      *
      * @param $id
+     * @return array
      */
     public function media($id) {
        return $this->get('media/'.$id);
