@@ -89,7 +89,7 @@ class WpApi
      */
     public function post($slug)
     {
-        return $this->get('posts', ['_embed', 'slug' => $slug]);
+        return $this->get('posts', ['?_embed', 'slug' => $slug]);
     }
 
     /**
@@ -150,7 +150,7 @@ class WpApi
      */
     public function categoryPosts($cat = null, $page = null, $pp = null)
     {
-        return $this->get('posts', ['_embed','categories' => trim($cat),'page' => $page, 'per_page' => $pp]);
+        return $this->get('posts', ['?_embed','categories' => trim($cat),'page' => $page, 'per_page' => $pp]);
     }
 
     /**
