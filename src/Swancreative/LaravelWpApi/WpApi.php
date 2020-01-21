@@ -211,6 +211,15 @@ class WpApi
     }
 
     /**
+     * Get media information by media id
+     *
+     * @param $id
+     */
+    public function media($id) {
+       return $this->get('media/'.$id);
+    }
+
+    /**
      * Get data from the API
      *
      * @param  string $method
