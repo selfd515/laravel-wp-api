@@ -2,7 +2,6 @@
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
-use Debugbar;
 
 class WpApi
 {
@@ -151,7 +150,7 @@ class WpApi
      */
     public function categoryPosts($cat = null, $page = null, $pp = null)
     {
-        return $this->get('posts', ['categories' => trim($cat),'page' => $page, 'per_page' => $pp]);
+        return $this->get('posts', ['categories' => trim($cat),'page' => $page, 'per_page' => $pp, '_embed' => '']);
     }
 
     /**
@@ -241,7 +240,6 @@ class WpApi
             if ($this->auth) {
                 $query['auth'] = $this->auth;
             }
-            Debugbar::info($this->client->get($this->endpoint . $method, $query));
             $response = $this->client->get($this->endpoint . $method, $query);
 
             $return = [
